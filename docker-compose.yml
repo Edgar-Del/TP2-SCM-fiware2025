@@ -113,6 +113,80 @@ services:
       - IOTA_AUTOCAST=true
       - IOTA_PROVIDER_URL=http://iot-agent:4041
 
+  # MySQL – Banco de dados para Cygnus
+  mysql:
+    image: mysql:8.0
+    container_name: fiware-mysql
+    restart: always
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_DATABASE=fiware
+      - MYSQL_USER=fiware
+      - MYSQL_PASSWORD=fiware123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  # Cygnus – Persistência de dados para MySQL/MongoDB
+  cygnus:
+    image: fiware/cygnus-ngsi:latest
+    container_name: fiware-cygnus
+    restart: always
+    hostname: cygnus
+    depends_on:
+      - orion
+      - mysql
+    ports:
+      - "5080:5080"
+      - "5050:5050"
+    environment:
+      # --- Configuração do Cygnus ---
+      - CYGNUS_MYSQL_HOST=mysql
+      - CYGNUS_MYSQL_PORT=3306
+      - CYGNUS_MYSQL_USER=fiware
+      - CYGNUS_MYSQL_PASS=fiware123
+      - CYGNUS_MYSQL_DATABASE=fiware
+      
+      # --- Configuração do MongoDB ---
+      - CYGNUS_MONGO_HOSTS=mongo-db-historical:27017
+      - CYGNUS_MONGO_USER=admin
+      - CYGNUS_MONGO_PASS=admin123
+      - CYGNUS_MONGO_AUTH_SOURCE=admin
+      
+      # --- Configuração do Orion ---
+      - CYGNUS_ORION_HOST=orion
+      - CYGNUS_ORION_PORT=1026
+      
+      # --- Outros ajustes ---
+      - CYGNUS_LOG_LEVEL=DEBUG
+      - CYGNUS_SERVICE_PORT=5080
+      - CYGNUS_ADMIN_PORT=5050
+
+  # Grafana – Visualização de Dados
+  grafana:
+    image: grafana/grafana:latest
+    container_name: fiware-grafana
+    restart: always
+    hostname: grafana
+    depends_on:
+      - fiware-sth-comet
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-simple-json-datasource
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+
 volumes:
   mongo-historical-data:
   mongo-internal-data:
+  grafana-data:
+  mysql-data:

@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: STH-Comet
+    type: grafana-simple-json-datasource
+    access: proxy
+    url: http://sth-comet:8666
+    jsonData:
+      defaultDatabase: sth_
+    editable: true 

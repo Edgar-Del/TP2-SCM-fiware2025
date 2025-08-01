@@ -1,0 +1,23 @@
+Conecte os Componentes:
+Sensor de Temperatura (TMP36):
+Pino de alimentação (power): Conecte ao 5V do Arduino.
+Pino de saída (vout): Conecte à porta analógica A0 do Arduino.
+Pino terra (ground): Conecte ao GND do Arduino.
+Display LCD 16x2:
+Pino GND (Pino 1): Conecte ao GND do Arduino (linha azul da protoboard).
+Pino VCC (Pino 2): Conecte ao 5V do Arduino (linha vermelha da protoboard).
+Pino VO (Pino 3): Conecte ao pino central do potenciômetro.
+Pino RS (Pino 4): Conecte à porta digital 12 do Arduino.
+Pino RW (Pino 5): Conecte ao GND do Arduino.
+Pino E (Pino 6): Conecte à porta digital 11 do Arduino.
+Ignore os pinos DB0 a DB3 (Pinos 7 a 10).
+Pino DB4 (Pino 11): Conecte à porta digital 5 do Arduino.
+Pino DB5 (Pino 12): Conecte à porta digital 4 do Arduino.
+Pino DB6 (Pino 13): Conecte à porta digital 3 do Arduino.
+Pino DB7 (Pino 14): Conecte à porta digital 2 do Arduino.
+Pino LED+ (Pino 15): Conecte a um terminal do resistor de 220 Ω. O outro terminal do resistor deve ser conectado ao 5V.
+Pino LED- (Pino 16): Conecte ao GND do Arduino.
+Potenciômetro:
+Terminal 1: Conecte ao 5V.
+Terminal 2 (Wiper): Conecte ao pino VO do LCD.
+Terminal 3: Conecte ao GND.
