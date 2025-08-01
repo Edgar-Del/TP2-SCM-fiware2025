@@ -1,4 +1,4 @@
-# 🎓 Trabalho Prático 2 - Sistemas de Comunicação Móvel
+# Trabalho Prático 2 - Sistemas de Comunicação Móvel
 
 **Universidade Katyavala Bwila - Instituto Politécnico**  
 **Mestrado em Engenharia Informática**
@@ -7,12 +7,8 @@
 
 ### **Disciplina:** Sistemas de Comunicação Móvel
 ### **Trabalho:** TP2 – FiWARE IoT Middleware
-### **Duração:** 480 minutos (8 horas)
-- 120 minutos de trabalho individual prévio
-- 120 minutos em laboratório/sessão prática
-- 240 minutos de trabalho autónomo suplementar
 
-## 🎯 Objectivos
+##Objectivos
 
 ### **I. Objectivos Principais**
 - ✅ Instalar e iniciar o ambiente FIWARE via Docker Compose
@@ -30,7 +26,7 @@
 - Configurar visualização e monitoramento
 - Utilizar containers Docker para desenvolvimento
 
-## 📚 Pré-Requisitos
+##Pré-Requisitos
 
 ### **Conhecimentos Teóricos**
 - Conceitos básicos de redes e HTTP
@@ -45,10 +41,10 @@
 - Editor de código (VSCode, Sublime, etc.)
 - Putty (para conexões SSH)
 
-## 🛠️ Materiais Necessários
+## Materiais Necessários
 
 ### **Ambiente de Desenvolvimento**
-- Computador com VM Ubuntu/Linux do Fiware Pré-configurado
+- Computador com VM Ubuntu/Linux do Fiware Pré-configurado (neste caso não utilizamos)
 - Acesso à internet
 - Ambiente virtual em VMware ou VirtualBox
 
@@ -57,7 +53,7 @@
 - Scripts JSON para testar com o Postman
 - Documentação e guias de configuração
 
-## 🔬 Introdução Teórica
+## Introdução
 
 ### **O que é o FIWARE?**
 O FIWARE é uma plataforma de código aberto que oferece módulos (Generic Enablers) para construção de aplicações inteligentes, incluindo suporte a IoT, big data e serviços contextuais.
@@ -111,44 +107,6 @@ python3 scripts/fiware_manager.py setup
 - Configurar um painel de visualização
 - Monitorar as medições recebidas
 
-## 🎓 Aprendizagens Esperadas
-
-### **Conhecimentos Técnicos**
-- Arquiteturas IoT baseadas em FIWARE
-- APIs REST e protocolos IoT
-- Persistência de dados em tempo real
-- Visualização e monitoramento
-- Containers Docker
-
-### **Competências Práticas**
-- Configuração de ambientes IoT
-- Trabalho com APIs e serviços web
-- Implementação de sistemas distribuídos
-- Debugging e troubleshooting
-- Documentação técnica
-
-### **Soft Skills**
-- Trabalho autónomo
-- Resolução de problemas
-- Documentação de soluções
-- Apresentação de resultados
-
-## 📊 Avaliação
-
-### **Critérios de Avaliação**
-- ✅ Configuração correta do ambiente FIWARE
-- ✅ Criação e funcionamento das entidades IoT
-- ✅ Implementação de subscrições
-- ✅ Persistência de dados funcionando
-- ✅ Visualização configurada no Grafana
-- ✅ Documentação do trabalho realizado
-
-### **Entregáveis**
-- Código fonte do projeto
-- Documentação técnica
-- Relatório de implementação
-- Demonstração prática do sistema
-
 ## 🔗 Recursos Adicionais
 
 ### **Documentação FIWARE**
@@ -162,14 +120,6 @@ python3 scripts/fiware_manager.py setup
 - [Grafana](https://grafana.com/)
 - [MySQL](https://www.mysql.com/)
 
-## 📝 Notas Importantes
-
-### **Dicas para o Trabalho**
-1. **Comece cedo** - O ambiente pode demorar a configurar
-2. **Teste cada etapa** - Verifique se cada componente está funcionando
-3. **Documente tudo** - Anote problemas e soluções encontradas
-4. **Use os scripts** - Aproveite a automação disponível
-5. **Pratique** - Experimente diferentes cenários
 
 ### **Problemas Comuns**
 - Containers não iniciam: Verificar Docker e recursos do sistema
@@ -179,5 +129,5 @@ python3 scripts/fiware_manager.py setup
 
 ---
 
-**🎓 Trabalho Prático 2 - Sistemas de Comunicação Móvel**  
+**Trabalho Prático 2 - Sistemas de Comunicação Móvel**  
 **Universidade Katyavala Bwila - Instituto Politécnico** 
