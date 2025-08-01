@@ -26,35 +26,20 @@ Plataforma completa de IoT baseada no FIWARE com persistência de dados, visuali
 #### **Ferramentas Necessárias:**
 - Docker e Docker Compose
 - Postman
-- Cliente SSH (PuTTY ou terminal nativo)
-- Editor de código (VSCode, Sublime, etc.)
-- Putty
+- Editor de código (VSCode, preferencial)
 
 ### **III. Materiais Necessários**
-- Computador com VM Ubuntu/Linux do Fiware Pré-configurado
+- Computador
 - Acesso à internet
 - Repositório com o ambiente FIWARE (Docker Compose)
 - Scripts JSON para testar com o Postman
-- Ambiente virtual em VMware ou VirtualBox
-
-### **IV. Duração e Organização**
-- ⏱️ **120 minutos** de trabalho individual prévio
-- ⏱️ **120 minutos** em laboratório/sessão prática
-- ⏱️ **240 minutos** de trabalho autónomo suplementar
 
 ### **V. Introdução**
 O FIWARE é uma plataforma de código aberto que oferece módulos (Generic Enablers) para construção de aplicações inteligentes, incluindo suporte a IoT, big data e serviços contextuais. 
 
-Neste laboratório, é utilizado um cenário de IoT onde simulamos o envio de dados de sensores virtuais (por exemplo, temperatura e humidade numa sala) para o Context Broker (Orion), usando o protocolo UL2.0 via IoT Agent.
+Neste projecto, é utilizado um cenário de IoT onde simulamos o envio de dados de sensores virtuais (por exemplo, temperatura e humidade numa sala) para o Context Broker (Orion), usando o protocolo UL2.0 via IoT Agent.
 
 O ambiente é iniciado via docker-compose, onde todos os containers (MongoDB, Orion, IDAS, Cygnus, MySQL e Grafana) são levantados automaticamente.
-
-**Durante este guião, os alunos irão:**
-- Criar entidades como "Room1" com atributos temperature e humidity
-- Registar dispositivos como sensor-a87020747f via IoT Agent
-- Simular envio de dados com o Postman (em vez de curl)
-- Criar subscrições para persistência de dados
-- Aceder ao Grafana e configurar um painel de visualização para as medições recebidas
 
 ## 📁 Estrutura do Projeto
 
