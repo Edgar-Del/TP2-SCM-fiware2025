@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script para consultar dados persistidos no MongoDB do FIWARE
-Demonstra diferentes formas de acessar os dados
+uma gambiarra para facilitar os testes
 """
 
 import requests

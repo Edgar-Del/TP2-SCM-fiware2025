@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-FIWARE Manager - Script principal para gerenciar o projeto FIWARE
-Integra todas as funcionalidades: subscrições, persistência, visualização
+FIWARE Manager - Script principal para gerenciar o projecto FIWARE
+Este é ou será o nosso arquivo de inicialização "automatizada" do projecto
 """
 
 import requests
@@ -33,7 +33,7 @@ class FiwareManager:
     
     def check_services(self):
         """Verifica se todos os serviços estão funcionando"""
-        print("🔍 Verificando serviços...")
+        print("Verificando serviços...")
         
         services = {
             "Orion": f"{ORION_URL}/version",
@@ -50,11 +50,11 @@ class FiwareManager:
                     response = requests.get(url)
                 
                 if response.status_code in [200, 404]:  # 404 é OK para STH Comet sem dados
-                    print(f"✅ {service_name} está funcionando")
+                    print(f"{service_name} está funcionando")
                 else:
-                    print(f"❌ {service_name} retornou erro: {response.status_code}")
+                    print(f"{service_name} retornou erro: {response.status_code}")
             except Exception as e:
-                print(f"❌ {service_name} não está acessível: {e}")
+                print(f"{service_name} não está acessível: {e}")
     
     def wait_for_orion(self):
         """Aguarda o Orion estar disponível"""
@@ -64,19 +64,19 @@ class FiwareManager:
             try:
                 response = requests.get(f"{ORION_URL}/version")
                 if response.status_code == 200:
-                    print("✅ Orion está disponível!")
+                    print("Orion está disponível!")
                     return True
             except requests.exceptions.ConnectionError:
                 pass
             time.sleep(2)
             print(f"Tentativa {attempt + 1}/{max_attempts}...")
         
-        print("❌ Orion não está disponível")
+        print("Orion não está disponível")
         return False
     
     def create_subscriptions(self):
         """Cria subscrições para persistência de dados"""
-        print("\n📊 Criando subscrições...")
+        print("\nCriando subscrições...")
         
         # Deletar subscrições existentes
         self.delete_existing_subscriptions()
@@ -114,17 +114,17 @@ class FiwareManager:
             )
             
             if response.status_code == 201:
-                print("✅ Subscrição criada com sucesso!")
+                print("Subscrição criada com sucesso!")
                 subscription_id = response.headers.get('Location', '').split('/')[-1]
-                print(f"📋 ID da subscrição: {subscription_id}")
+                print(f"ID da subscrição: {subscription_id}")
                 return subscription_id
             else:
-                print(f"❌ Erro ao criar subscrição: {response.status_code}")
+                print(f"Erro ao criar subscrição: {response.status_code}")
                 print(response.text)
                 return None
                 
         except Exception as e:
-            print(f"❌ Erro na criação da subscrição: {e}")
+            print(f"Erro na criação da subscrição: {e}")
             return None
     
     def delete_existing_subscriptions(self):
@@ -144,13 +144,13 @@ class FiwareManager:
                             f"{ORION_URL}/v2/subscriptions/{sub_id}",
                             headers=self.orion_headers
                         )
-                        print(f"🗑️  Subscrição {sub_id} deletada")
+                        print(f"Subscrição {sub_id} deletada")
         except Exception as e:
-            print(f"⚠️  Erro ao deletar subscrições: {e}")
+            print(f"Erro ao deletar subscrições: {e}")
     
     def generate_test_data(self):
         """Gera dados de teste"""
-        print("\n🧪 Gerando dados de teste...")
+        print("\n Gerando dados de teste...")
         
         # Criar entidade
         entity_data = {
@@ -175,7 +175,7 @@ class FiwareManager:
             )
             
             if response.status_code == 201:
-                print("✅ Entidade criada com sucesso!")
+                print("Entidade criada com sucesso!")
                 
                 # Atualizar entidade várias vezes para gerar dados
                 for i in range(1, 11):
@@ -197,24 +197,24 @@ class FiwareManager:
                     )
                     
                     if response.status_code == 204:
-                        print(f"✅ Atualização {i}/10 realizada")
+                        print(f"Actualização {i}/10 realizada")
                     else:
-                        print(f"❌ Erro na atualização {i}")
+                        print(f"Erro na actualização {i}")
                     
                     time.sleep(1)
                 
                 return True
             else:
-                print(f"❌ Erro ao criar entidade: {response.status_code}")
+                print(f"Erro ao criar entidade: {response.status_code}")
                 return False
                 
         except Exception as e:
-            print(f"❌ Erro ao gerar dados de teste: {e}")
+            print(f"Erro ao gerar dados de teste: {e}")
             return False
     
     def configure_grafana(self):
         """Configura o Grafana"""
-        print("\n📊 Configurando Grafana...")
+        print("\nConfigurando Grafana...")
         
         # Aguardar Grafana estar disponível
         max_attempts = 30
@@ -222,14 +222,14 @@ class FiwareManager:
             try:
                 response = requests.get(f"{GRAFANA_URL}/api/health")
                 if response.status_code == 200:
-                    print("✅ Grafana está disponível!")
+                    print("Grafana está disponível!")
                     break
             except requests.exceptions.ConnectionError:
                 pass
             time.sleep(2)
             print(f"Tentativa {attempt + 1}/{max_attempts}...")
         else:
-            print("❌ Grafana não está disponível")
+            print("Grafana não está disponível")
             return False
         
         # Criar datasource MySQL
@@ -271,19 +271,19 @@ class FiwareManager:
             )
             
             if response.status_code == 200:
-                print("✅ Datasource MySQL criado com sucesso!")
+                print("Datasource MySQL criado com sucesso!")
                 return True
             else:
-                print(f"❌ Erro ao criar datasource MySQL: {response.status_code}")
+                print(f"Erro ao criar datasource MySQL: {response.status_code}")
                 return False
                 
         except Exception as e:
-            print(f"❌ Erro na criação do datasource MySQL: {e}")
+            print(f"Erro na criação do datasource MySQL: {e}")
             return False
     
     def check_data_persistence(self):
         """Verifica a persistência de dados"""
-        print("\n🗄️  Verificando persistência de dados...")
+        print("\nVerificando persistência de dados...")
         
         # Verificar MySQL
         try:
@@ -296,15 +296,15 @@ class FiwareManager:
             result = subprocess.run(cmd, capture_output=True, text=True)
             
             if result.returncode == 0:
-                print("✅ Conexão com MySQL bem-sucedida!")
+                print("Conexão com MySQL bem-sucedida!")
                 if result.stdout.strip():
-                    print("📊 Tabelas encontradas no MySQL")
+                    print("Tabelas encontradas no MySQL")
                 else:
-                    print("⚠️  Nenhuma tabela encontrada no MySQL")
+                    print("Nenhuma tabela encontrada no MySQL")
             else:
-                print(f"❌ Erro ao conectar com MySQL: {result.stderr}")
+                print(f"Erro ao conectar com MySQL: {result.stderr}")
         except Exception as e:
-            print(f"❌ Erro ao verificar MySQL: {e}")
+            print(f"Erro ao verificar MySQL: {e}")
         
         # Verificar MongoDB
         try:
@@ -318,15 +318,15 @@ class FiwareManager:
             result = subprocess.run(cmd, capture_output=True, text=True)
             
             if result.returncode == 0:
-                print("✅ Conexão com MongoDB bem-sucedida!")
+                print("Conexão com MongoDB bem-sucedida!")
             else:
-                print(f"❌ Erro ao conectar com MongoDB: {result.stderr}")
+                print(f"Erro ao conectar com MongoDB: {result.stderr}")
         except Exception as e:
-            print(f"❌ Erro ao verificar MongoDB: {e}")
+            print(f"Erro ao verificar MongoDB: {e}")
     
     def show_status(self):
         """Mostra o status atual do sistema"""
-        print("\n📊 Status do Sistema FIWARE")
+        print("\nStatus do Sistema FIWARE")
         print("=" * 40)
         
         # Verificar containers
@@ -340,9 +340,9 @@ class FiwareManager:
                     if container.strip():
                         print(f"  - {container.split()[-1]}")
             else:
-                print("❌ Erro ao verificar containers")
+                print("erro ao verificar containers")
         except Exception as e:
-            print(f"❌ Erro ao verificar containers: {e}")
+            print(f"Erro ao verificar containers: {e}")
         
         # Verificar serviços
         self.check_services()
@@ -356,17 +356,17 @@ class FiwareManager:
             
             if response.status_code == 200:
                 subscriptions = response.json()
-                print(f"\n📋 Subscrições ativas: {len(subscriptions)}")
+                print(f"\nSubscrições activas: {len(subscriptions)}")
                 for sub in subscriptions:
                     print(f"  - {sub.get('description', 'Sem descrição')}")
             else:
-                print("\n❌ Erro ao verificar subscrições")
+                print("\nErro ao verificar subscrições")
         except Exception as e:
-            print(f"\n❌ Erro ao verificar subscrições: {e}")
+            print(f"\nErro ao verificar subscrições: {e}")
     
     def run_full_setup(self):
         """Executa configuração completa do sistema"""
-        print("🚀 Configuração Completa do Sistema FIWARE")
+        print("Configuração Completa do Sistema FIWARE")
         print("=" * 50)
         
         # 1. Verificar serviços
@@ -389,17 +389,17 @@ class FiwareManager:
         self.check_data_persistence()
         
         print("\n" + "=" * 50)
-        print("✅ Configuração completa finalizada!")
-        print("\n📋 Próximos passos:")
+        print("Configuração completa finalizada!")
+        print("\nPróximos passos:")
         print("1. Acesse o Grafana: http://localhost:3000 (admin/admin123)")
         print("2. Configure o datasource STH Comet manualmente")
         print("3. Crie dashboards para seus dados")
-        print("4. Teste com dados reais do seu ESP32")
+        print("4. Teste com dados reais do seu ESP32 (proximo desafio - ainda não implementado)")
     
     def show_help(self):
         """Mostra ajuda do script"""
         print("""
-🤖 FIWARE Manager - Gerenciador do Projeto FIWARE
+FIWARE Manager - Gerenciador do Projeto FIWARE
 
 Uso: python3 fiware_manager.py [comando]
 
@@ -446,7 +446,7 @@ def main():
     elif command == "help":
         manager.show_help()
     else:
-        print(f"❌ Comando '{command}' não reconhecido")
+        print(f"Comando '{command}' não reconhecido")
         manager.show_help()
 
 if __name__ == "__main__":
