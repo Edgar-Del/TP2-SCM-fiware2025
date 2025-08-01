@@ -9,13 +9,13 @@ Plataforma completa de IoT baseada no FIWARE com persistência de dados, visuali
 ## 📋 Informações do Trabalho Prático
 
 ### **I. Objectivos**
-- ✅ Instalar e iniciar o ambiente FIWARE via Docker Compose
-- ✅ Criar entidades e dispositivos IoT simulados (salas com sensores de temperatura e humidade)
-- ✅ Registar dispositivos com o IoT Agent (IDAS)
-- ✅ Enviar dados simulados para o Context Broker (Orion)
-- ✅ Criar subscrições para aplicações externas
-- ✅ Persistir dados históricos com o Cygnus em base de dados MySQL
-- ✅ Visualizar dados no Grafana
+- Instalar e iniciar o ambiente FIWARE via Docker Compose
+- Criar entidades e dispositivos IoT simulados (salas com sensores de temperatura e humidade)
+- Registar dispositivos com o IoT Agent (IDAS)
+- Enviar dados simulados para o Context Broker (Orion)
+- Criar subscrições para aplicações externas
+- Persistir dados históricos com o Cygnus em base de dados MySQL
+- Visualizar dados no Grafana
 
 ### **II. Pré-Requisitos**
 #### **Conhecimentos:**
@@ -152,20 +152,18 @@ ESP32 → MQTT → IoT Agent → Orion → [Subscrições] → Cygnus → MySQL/
 
 ## 📊 Funcionalidades
 
-### **✅ Implementadas:**
-- ✅ Persistência automática de dados
-- ✅ Subscrições Orion configuráveis
-- ✅ Visualização no Grafana
-- ✅ Suporte a MySQL e MongoDB
-- ✅ Scripts de automação
-- ✅ Geração de dados de teste
-- ✅ Monitoramento de serviços
+### ** Implementadas:**
+-  Persistência automática de dados
+-  Subscrições Orion configuráveis
+-  Visualização no Grafana
+-  Suporte a MySQL e MongoDB
+-  Scripts de automação
+-  Geração de dados de teste
+-  Monitoramento de serviços
 
 ### **🔧 Configurações:**
-- 🔧 Dashboards personalizáveis
-- 🔧 Alertas configuráveis
-- 🔧 Integração com ESP32
-- 🔧 APIs REST documentadas
+-  Dashboards personalizáveis
+-  APIs REST documentadas
 
 ## 📚 Documentação
 
@@ -173,7 +171,6 @@ ESP32 → MQTT → IoT Agent → Orion → [Subscrições] → Cygnus → MySQL/
 - `TRABALHO_PRATICO_2.md` - **Documentação completa do TP2**
 - Informações sobre objectivos, pré-requisitos e avaliação
 - Guia passo-a-passo para implementação
-- Critérios de avaliação e entregáveis
 
 ### **Guias Técnicos:**
 - `docs/GUIA_CONSULTAS_MONGODB.md` - Consultas de dados
@@ -181,7 +178,7 @@ ESP32 → MQTT → IoT Agent → Orion → [Subscrições] → Cygnus → MySQL/
 - `docs/GUIA_SUBSCRICOES_CYGNUS.md` - Subscrições e persistência
 - `docs/GUIA_VISUALIZACAO_DADOS.md` - Visualização de dados
 
-### **Exemplos:**
+### **Exemplos (POR IMPLEMENTAR...):**
 - `examples/fiware_ngsi_mqtt_esp32.ino` - Código ESP32
 - `tools/FIWARE Descomplicado.postman_collection.json` - Collection Postman
 
@@ -234,7 +231,7 @@ python3 scripts/fiware_manager.py test-data
 python3 scripts/fiware_manager.py grafana
 ```
 
-### **Consultas de Dados:**
+### **Consultas de Dados (curl):**
 ```bash
 # Consultar entidades
 curl -X GET "http://localhost:1026/v2/entities" \
@@ -292,14 +289,14 @@ python3 scripts/fiware_manager.py persistence
 ### **📚 Contexto Académico**
 Este projeto foi desenvolvido no âmbito do **Trabalho Prático 2** da disciplina de **Sistemas de Comunicação Móvel** do **Mestrado em Engenharia Informática** da **Universidade Katyavala Bwila - Instituto Politécnico**.
 
-### **🎯 Objectivos Alcançados**
-- ✅ **Ambiente FIWARE** instalado e configurado via Docker Compose
-- ✅ **Entidades IoT** criadas (salas com sensores de temperatura e humidade)
-- ✅ **Dispositivos registados** com IoT Agent (IDAS)
-- ✅ **Dados simulados** enviados para Context Broker (Orion)
-- ✅ **Subscrições criadas** para aplicações externas
-- ✅ **Persistência de dados** implementada com Cygnus e MySQL
-- ✅ **Visualização** configurada no Grafana
+### **🎯 OBJECTIVOS ALCANÇADOS**
+- **Ambiente FIWARE** instalado e configurado via Docker Compose
+- **Entidades IoT** criadas (salas com sensores de temperatura e humidade)
+- **Dispositivos registados** com IoT Agent (IDAS)
+- **Dados simulados** enviados para Context Broker (Orion)
+- **Subscrições criadas** para aplicações externas
+- **Persistência de dados** implementada com Cygnus e MySQL
+- **Visualização** configurada no Grafana
 
 ### **🔬 Cenário de Teste**
 O projeto simula um ambiente IoT onde:
@@ -308,7 +305,7 @@ O projeto simula um ambiente IoT onde:
 - **Dados históricos** são persistidos automaticamente
 - **Visualização em tempo real** é disponibilizada via Grafana
 
-### **📊 Tecnologias Utilizadas**
+### **Tecnologias Utilizadas**
 - **FIWARE Orion** - Context Broker
 - **IoT Agent UL** - Conectividade IoT
 - **Cygnus** - Persistência de dados
@@ -329,7 +326,7 @@ Este trabalho prático permitiu:
 
 1. Fork o projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+3. Commit suas mudanças (`git commit -m 'Add uma funcionalidade qualquer'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
@@ -343,9 +340,8 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 - [FIWARE Tutorials](https://fiware-tutorials.readthedocs.io/)
 - [Telefónica IoT](https://iot.telefonica.com/)
 - **Universidade Katyavala Bwila** - Instituto Politécnico
-- **Professores** da disciplina de Sistemas de Comunicação Móvel
+- **Professor** Ngombo M. Armando
 
 ---
-
-**🎯 Projeto organizado e pronto para uso!**  
-**🎓 Trabalho Prático 2 - Sistemas de Comunicação Móvel**
+  
+**Trabalho Prático 2 - Sistemas de Comunicação Móvel**
