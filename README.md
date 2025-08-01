@@ -1,4 +1,4 @@
-# 🚀 FIWARE IoT Platform
+# Projecto de Implemetação do FIWARE IoT
 
 **Trabalho Prático 2 - Sistemas de Comunicação Móvel**  
 **Universidade Katyavala Bwila - Instituto Politécnico**  
