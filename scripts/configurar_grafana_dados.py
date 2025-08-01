@@ -22,19 +22,19 @@ def wait_for_grafana():
         try:
             response = requests.get(f"{GRAFANA_URL}/api/health")
             if response.status_code == 200:
-                print("✅ Grafana está disponível!")
+                print("Grafana está disponível!")
                 return True
         except requests.exceptions.ConnectionError:
             pass
         time.sleep(2)
         print(f"Tentativa {attempt + 1}/{max_attempts}...")
     
-    print("❌ Grafana não está disponível")
+    print("Grafana não está disponível")
     return False
 
 def create_datasource_sth_comet():
     """Cria datasource para STH Comet"""
-    print("\n📊 Criando datasource STH Comet...")
+    print("\nCriando datasource STH Comet...")
     
     datasource_config = {
         "name": "STH-Comet",
@@ -61,20 +61,20 @@ def create_datasource_sth_comet():
         )
         
         if response.status_code == 200:
-            print("✅ Datasource STH Comet criado com sucesso!")
+            print("Datasource STH Comet criado com sucesso!")
             return True
         else:
-            print(f"❌ Erro ao criar datasource: {response.status_code}")
+            print(f"Erro ao criar datasource: {response.status_code}")
             print(response.text)
             return False
             
     except Exception as e:
-        print(f"❌ Erro na criação do datasource: {e}")
+        print(f"Erro na criação do datasource: {e}")
         return False
 
 def create_datasource_mysql():
     """Cria datasource para MySQL"""
-    print("\n📊 Criando datasource MySQL...")
+    print("\nCriando datasource MySQL...")
     
     datasource_config = {
         "name": "MySQL",
@@ -108,20 +108,20 @@ def create_datasource_mysql():
         )
         
         if response.status_code == 200:
-            print("✅ Datasource MySQL criado com sucesso!")
+            print("Datasource MySQL criado com sucesso!")
             return True
         else:
-            print(f"❌ Erro ao criar datasource MySQL: {response.status_code}")
+            print(f"Erro ao criar datasource MySQL: {response.status_code}")
             print(response.text)
             return False
             
     except Exception as e:
-        print(f"❌ Erro na criação do datasource MySQL: {e}")
+        print(f"Erro na criação do datasource MySQL: {e}")
         return False
 
 def create_dashboard():
     """Cria dashboard para visualizar dados"""
-    print("\n📈 Criando dashboard...")
+    print("\nCriando dashboard...")
     
     dashboard_config = {
         "dashboard": {
@@ -178,15 +178,15 @@ def create_dashboard():
         )
         
         if response.status_code == 200:
-            print("✅ Dashboard criado com sucesso!")
+            print("Dashboard criado com sucesso!")
             return True
         else:
-            print(f"❌ Erro ao criar dashboard: {response.status_code}")
+            print(f"Erro ao criar dashboard: {response.status_code}")
             print(response.text)
             return False
             
     except Exception as e:
-        print(f"❌ Erro na criação do dashboard: {e}")
+        print(f"Erro na criação do dashboard: {e}")
         return False
 
 def generate_test_data():
@@ -225,7 +225,7 @@ def generate_test_data():
         if response.status_code == 201:
             print("✅ Entidade criada com sucesso!")
             
-            # Atualizar entidade várias vezes para gerar dados
+            # Actualizar entidade várias vezes para gerar dados
             for i in range(1, 11):
                 update_data = {
                     "luminosity": {
@@ -245,24 +245,24 @@ def generate_test_data():
                 )
                 
                 if response.status_code == 204:
-                    print(f"✅ Atualização {i}/10 realizada")
+                    print(f"Actualização {i}/10 realizada")
                 else:
-                    print(f"❌ Erro na atualização {i}")
+                    print(f"Erro na actualização {i}")
                 
                 time.sleep(1)
             
             return True
         else:
-            print(f"❌ Erro ao criar entidade: {response.status_code}")
+            print(f"Erro ao criar entidade: {response.status_code}")
             return False
             
     except Exception as e:
-        print(f"❌ Erro ao gerar dados de teste: {e}")
+        print(f"Erro ao gerar dados de teste: {e}")
         return False
 
 def main():
     """Função principal"""
-    print("🚀 Configurando Grafana para Visualização de Dados")
+    print("Configurando Grafana para Visualização de Dados")
     print("=" * 50)
     
     # 1. Aguardar Grafana
@@ -282,11 +282,11 @@ def main():
     create_dashboard()
     
     print("\n" + "=" * 50)
-    print("✅ Configuração concluída!")
-    print(f"🌐 Acesse o Grafana em: {GRAFANA_URL}")
-    print("👤 Usuário: admin")
-    print("🔑 Senha: admin123")
-    print("\n📋 Próximos passos:")
+    print("Configuração concluída!")
+    print(f"Acesse o Grafana em: {GRAFANA_URL}")
+    print("Usuário: admin")
+    print("Senha: admin123")
+    print("\nPróximos passos:")
     print("1. Faça login no Grafana")
     print("2. Vá em Configuration > Data Sources")
     print("3. Configure os datasources STH-Comet e MySQL")
