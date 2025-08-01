@@ -23,19 +23,19 @@ def wait_for_orion():
         try:
             response = requests.get(f"{ORION_URL}/version")
             if response.status_code == 200:
-                print("✅ Orion está disponível!")
+                print("Orion está disponível!")
                 return True
         except requests.exceptions.ConnectionError:
             pass
         time.sleep(2)
         print(f"Tentativa {attempt + 1}/{max_attempts}...")
     
-    print("❌ Orion não está disponível")
+    print("Orion não está disponível")
     return False
 
 def create_subscription_to_cygnus_mysql():
     """Cria subscrição para persistir dados no MySQL via Cygnus"""
-    print("\n📊 Criando subscrição para MySQL...")
+    print("\nCriando subscrição para MySQL...")
     
     subscription_data = {
         "description": "Subscrição para persistir dados no MySQL via Cygnus",
@@ -76,22 +76,22 @@ def create_subscription_to_cygnus_mysql():
         )
         
         if response.status_code == 201:
-            print("✅ Subscrição para MySQL criada com sucesso!")
+            print("Subscrição para MySQL criada com sucesso!")
             subscription_id = response.headers.get('Location', '').split('/')[-1]
-            print(f"📋 ID da subscrição: {subscription_id}")
+            print(f"ID da subscrição: {subscription_id}")
             return subscription_id
         else:
-            print(f"❌ Erro ao criar subscrição: {response.status_code}")
+            print(f"Erro ao criar subscrição: {response.status_code}")
             print(response.text)
             return None
             
     except Exception as e:
-        print(f"❌ Erro na criação da subscrição: {e}")
+        print(f"Erro na criação da subscrição: {e}")
         return None
 
 def create_subscription_to_cygnus_mongodb():
     """Cria subscrição para persistir dados no MongoDB via Cygnus"""
-    print("\n📊 Criando subscrição para MongoDB...")
+    print("\nCriando subscrição para MongoDB...")
     
     subscription_data = {
         "description": "Subscrição para persistir dados no MongoDB via Cygnus",
@@ -132,22 +132,22 @@ def create_subscription_to_cygnus_mongodb():
         )
         
         if response.status_code == 201:
-            print("✅ Subscrição para MongoDB criada com sucesso!")
+            print("Subscrição para MongoDB criada com sucesso!")
             subscription_id = response.headers.get('Location', '').split('/')[-1]
-            print(f"📋 ID da subscrição: {subscription_id}")
+            print(f"ID da subscrição: {subscription_id}")
             return subscription_id
         else:
-            print(f"❌ Erro ao criar subscrição: {response.status_code}")
+            print(f"Erro ao criar subscrição: {response.status_code}")
             print(response.text)
             return None
             
     except Exception as e:
-        print(f"❌ Erro na criação da subscrição: {e}")
+        print(f"Erro na criação da subscrição: {e}")
         return None
 
 def list_subscriptions():
     """Lista todas as subscrições existentes"""
-    print("\n📋 Listando subscrições existentes...")
+    print("\nListando subscrições existentes...")
     
     headers = {
         'Accept': 'application/json',
@@ -171,16 +171,16 @@ def list_subscriptions():
                 print("")
             return subscriptions
         else:
-            print(f"❌ Erro ao listar subscrições: {response.status_code}")
+            print(f"Erro ao listar subscrições: {response.status_code}")
             return []
             
     except Exception as e:
-        print(f"❌ Erro ao listar subscrições: {e}")
+        print(f"Erro ao listar subscrições: {e}")
         return []
 
 def delete_subscription(subscription_id):
     """Deleta uma subscrição específica"""
-    print(f"\n🗑️  Deletando subscrição {subscription_id}...")
+    print(f"\nDeletando subscrição {subscription_id}...")
     
     headers = {
         'Accept': 'application/json',
@@ -195,36 +195,36 @@ def delete_subscription(subscription_id):
         )
         
         if response.status_code == 204:
-            print("✅ Subscrição deletada com sucesso!")
+            print("Subscrição deletada com sucesso!")
             return True
         else:
-            print(f"❌ Erro ao deletar subscrição: {response.status_code}")
+            print(f"Erro ao deletar subscrição: {response.status_code}")
             return False
             
     except Exception as e:
-        print(f"❌ Erro ao deletar subscrição: {e}")
+        print(f"Erro ao deletar subscrição: {e}")
         return False
 
 def test_cygnus_connection():
     """Testa conexão com Cygnus"""
-    print("\n🔍 Testando conexão com Cygnus...")
+    print("\nTestando conexão com Cygnus...")
     
     try:
         response = requests.get(f"{CYGNUS_URL}/v1/version")
         if response.status_code == 200:
-            print("✅ Cygnus está funcionando!")
+            print("Cygnus está funcionando!")
             return True
         else:
-            print(f"❌ Cygnus retornou erro: {response.status_code}")
+            print(f"Cygnus retornou erro: {response.status_code}")
             return False
             
     except Exception as e:
-        print(f"❌ Erro ao conectar com Cygnus: {e}")
+        print(f"Erro ao conectar com Cygnus: {e}")
         return False
 
 def create_test_entity():
     """Cria uma entidade de teste para verificar as subscrições"""
-    print("\n🧪 Criando entidade de teste...")
+    print("\nCriando entidade de teste...")
     
     entity_data = {
         "id": "urn:ngsi-ld:Lamp:test001",
@@ -266,20 +266,20 @@ def create_test_entity():
         )
         
         if response.status_code == 201:
-            print("✅ Entidade de teste criada com sucesso!")
+            print("Entidade de teste criada com sucesso!")
             return True
         else:
-            print(f"❌ Erro ao criar entidade: {response.status_code}")
+            print(f"Erro ao criar entidade: {response.status_code}")
             print(response.text)
             return False
             
     except Exception as e:
-        print(f"❌ Erro ao criar entidade: {e}")
+        print(f"Erro ao criar entidade: {e}")
         return False
 
 def main():
     """Função principal"""
-    print("🚀 Configurando Subscrições Orion + Cygnus")
+    print("Configurando Subscrições Orion + Cygnus")
     print("=" * 50)
     
     # 1. Aguardar Orion
@@ -288,14 +288,14 @@ def main():
     
     # 2. Testar Cygnus
     if not test_cygnus_connection():
-        print("⚠️  Cygnus não está disponível, mas continuando...")
+        print("Cygnus não está disponível, mas continuando...")
     
     # 3. Listar subscrições existentes
     existing_subscriptions = list_subscriptions()
     
     # 4. Deletar subscrições existentes (opcional)
     if existing_subscriptions:
-        print("\n🗑️  Deletando subscrições existentes...")
+        print("\nDeletando subscrições existentes...")
         for sub in existing_subscriptions:
             delete_subscription(sub.get('id'))
     
@@ -312,8 +312,8 @@ def main():
     list_subscriptions()
     
     print("\n" + "=" * 50)
-    print("✅ Configuração concluída!")
-    print("\n📋 Próximos passos:")
+    print("Configuração concluída!")
+    print("\nPróximos passos (para testar):")
     print("1. Verifique os logs do Cygnus: docker logs fiware-cygnus")
     print("2. Verifique os dados no MySQL: docker exec -it fiware-mysql mysql -u fiware -pfiware123 fiware")
     print("3. Verifique os dados no MongoDB: docker exec -it fiware-mongo-historical mongo -u admin -p admin123 --authenticationDatabase admin")
